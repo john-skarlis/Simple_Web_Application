@@ -37,30 +37,34 @@ public class User {
     private String homeAddress;
 
 
-    public User() {
-    }
+//    public User() {
+//    }
 
-    public User(String name, String surname, String gender, LocalDate birthDate, String homeAddress) {
-        this.name = name;
-        this.surname = surname;
-        this.gender = gender;
-        this.birthDate = birthDate;
-        this.homeAddress = homeAddress;
-    }
-
-    public User(@JsonProperty("id") Long id,
-                @JsonProperty("name") String name,
-                @JsonProperty("surname") String surname,
+    public User(@JsonProperty("name")String name,
+                @JsonProperty("surname")String surname,
                 @JsonProperty("gender")String gender,
-                @JsonProperty("date") LocalDate birthDate,
+                @JsonProperty("date")LocalDate birthDate,
                 @JsonProperty("homeAddress")String homeAddress) {
-        this.id = id;
         this.name = name;
         this.surname = surname;
         this.gender = gender;
         this.birthDate = birthDate;
         this.homeAddress = homeAddress;
     }
+
+//    public User(@JsonProperty("id") Long id,
+//                @JsonProperty("name") String name,
+//                @JsonProperty("surname") String surname,
+//                @JsonProperty("gender")String gender,
+//                @JsonProperty("date")LocalDate birthDate,
+//                @JsonProperty("homeAddress")String homeAddress) {
+//        this.id = id;
+//        this.name = name;
+//        this.surname = surname;
+//        this.gender = gender;
+//        this.birthDate = birthDate;
+//        this.homeAddress = homeAddress;
+//    }
 
     public Long getId() {
         return id;

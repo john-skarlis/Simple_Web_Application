@@ -17,7 +17,12 @@ public class UserService {
         this.userdao = userdao;
     }
 
-    public List<User> addUser(User user){
+    public List<User> getUsers(User user){
         return userdao.findAll();
+    }
+
+    public void addUser(User user) {
+        System.out.println(user);
+        //userdao.save(user);
     }
 }

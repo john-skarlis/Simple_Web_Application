@@ -18,7 +18,12 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> addUser(User user){
-        return userService.addUser(user);
+    public List<User> getUsers(User user){
+        return userService.getUsers(user);
+    }
+
+    @PostMapping
+    public void addUser(@RequestBody User user){
+        userService.addUser(user);
     }
 }
