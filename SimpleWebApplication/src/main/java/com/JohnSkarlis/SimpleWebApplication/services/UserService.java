@@ -1,6 +1,6 @@
 package com.JohnSkarlis.SimpleWebApplication.services;
 
-import com.JohnSkarlis.SimpleWebApplication.dao.UserDao;
+import com.JohnSkarlis.SimpleWebApplication.repositories.UserRepository;
 import com.JohnSkarlis.SimpleWebApplication.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,19 +10,20 @@ import java.util.List;
 
 @Service
 public class UserService {
-    private final UserDao userdao;
+
+    private final UserRepository userRepository ;
 
     @Autowired
-    public UserService(@Qualifier("userDao") UserDao userdao) {
-        this.userdao = userdao;
+    public UserService(@Qualifier("userRepository") UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public List<User> getUsers(User user){
-        return userdao.findAll();
+        return userRepository.findAll();
     }
 
     public void addUser(User user) {
-        System.out.println(user);
-        //userdao.save(user);
+       // System.out.println(user);
+        //userRepository.save(user);
     }
 }

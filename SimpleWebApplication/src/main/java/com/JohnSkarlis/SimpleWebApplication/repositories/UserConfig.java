@@ -1,6 +1,7 @@
-package com.JohnSkarlis.SimpleWebApplication.dao;
+package com.JohnSkarlis.SimpleWebApplication.repositories;
 
 import com.JohnSkarlis.SimpleWebApplication.model.User;
+import com.JohnSkarlis.SimpleWebApplication.model.UserAddress;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,26 +13,27 @@ import java.util.List;
 public class UserConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(UserDao userDao) {
+    CommandLineRunner commandLineRunner(UserRepository userRepository,UserAddressRepository userAddressRepository) {
         return args -> {
             User john = new User(
                     "John",
                     "Skarlis",
                     "Male",
-                    LocalDate.of(1997, 11, 27),
-                    "Vasilika"
+                    LocalDate.of(1997, 11, 27)
             );
 
             User nick = new User(
                     "Nick",
                     "Papado",
                     "Male",
-                    LocalDate.of(1999, 5, 13),
-                    "Thermi"
+                    LocalDate.of(1999, 5, 13)
             );
-            userDao.saveAll(
+
+            UserAddress address = new UserAddress(john,"vasilika","thessaloniki");
+            userRepository.saveAll(
                     List.of(john,nick)
             );
+            userAddressRepository.saveAll(List.of(address));
         };
     }
 

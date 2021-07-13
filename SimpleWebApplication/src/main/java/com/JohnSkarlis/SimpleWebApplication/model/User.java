@@ -9,15 +9,7 @@ import java.time.LocalDate;
 @Table(name="users")
 public class User {
     @Id
-    @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "user_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
     private Long id;
 
@@ -33,38 +25,28 @@ public class User {
     @Column(name="birth_date")
     private LocalDate birthDate;
 
-    @Column(name="home_address")
-    private String homeAddress;
+//    @OneToOne
+//    private UserAddress userAddress;
+
+//    @Column(name="home_address")
+//    private String homeAddress;
 
 
-//    public User() {
-//    }
+    public User() {
+    }
 
     public User(@JsonProperty("name")String name,
                 @JsonProperty("surname")String surname,
                 @JsonProperty("gender")String gender,
-                @JsonProperty("date")LocalDate birthDate,
-                @JsonProperty("homeAddress")String homeAddress) {
+                @JsonProperty("date")LocalDate birthDate){
+//                @JsonProperty("homeAddress")String homeAddress) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
         this.birthDate = birthDate;
-        this.homeAddress = homeAddress;
+//        this.homeAddress = homeAddress;
     }
 
-//    public User(@JsonProperty("id") Long id,
-//                @JsonProperty("name") String name,
-//                @JsonProperty("surname") String surname,
-//                @JsonProperty("gender")String gender,
-//                @JsonProperty("date")LocalDate birthDate,
-//                @JsonProperty("homeAddress")String homeAddress) {
-//        this.id = id;
-//        this.name = name;
-//        this.surname = surname;
-//        this.gender = gender;
-//        this.birthDate = birthDate;
-//        this.homeAddress = homeAddress;
-//    }
 
     public Long getId() {
         return id;
@@ -86,9 +68,9 @@ public class User {
         return birthDate;
     }
 
-    public String getHomeAddress() {
-        return homeAddress;
-    }
+//    public String getHomeAddress() {
+//        return homeAddress;
+//    }
 
     public void setId(Long id) {
         this.id = id;
@@ -110,9 +92,10 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public void setHomeAddress(String homeAddress) {
-        this.homeAddress = homeAddress;
-    }
+//    public void setHomeAddress(String homeAddress) {
+//        this.homeAddress = homeAddress;
+//    }
+
 
     @Override
     public String toString() {
@@ -120,9 +103,8 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", gender=" + gender +
+                ", gender='" + gender + '\'' +
                 ", birthDate=" + birthDate +
-                ", homeAddress='" + homeAddress + '\'' +
                 '}';
     }
 }
