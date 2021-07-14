@@ -15,25 +15,29 @@ public class UserConfig {
     @Bean
     CommandLineRunner commandLineRunner(UserRepository userRepository,UserAddressRepository userAddressRepository) {
         return args -> {
+            UserAddress address1 = new UserAddress("vasilika","thessaloniki");
+            UserAddress address2 = new UserAddress("thermi","athens");
             User john = new User(
                     "John",
                     "Skarlis",
                     "Male",
-                    LocalDate.of(1997, 11, 27)
+                    LocalDate.of(1997, 11, 27),
+                    address1
             );
 
             User nick = new User(
                     "Nick",
                     "Papado",
                     "Male",
-                    LocalDate.of(1999, 5, 13)
+                    LocalDate.of(1999, 5, 13),
+                    address2
             );
 
-            UserAddress address = new UserAddress(john,"vasilika","thessaloniki");
+            userAddressRepository.saveAll(List.of(address1,address2));
             userRepository.saveAll(
                     List.of(john,nick)
             );
-            userAddressRepository.saveAll(List.of(address));
+
         };
     }
 

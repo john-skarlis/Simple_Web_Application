@@ -25,6 +25,11 @@ public class User {
     @Column(name="birth_date")
     private LocalDate birthDate;
 
+
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private UserAddress userAddress;
+
 //    @OneToOne
 //    private UserAddress userAddress;
 
@@ -38,17 +43,17 @@ public class User {
     public User(@JsonProperty("name")String name,
                 @JsonProperty("surname")String surname,
                 @JsonProperty("gender")String gender,
-                @JsonProperty("date")LocalDate birthDate){
-//                @JsonProperty("homeAddress")String homeAddress) {
+                @JsonProperty("date")LocalDate birthDate,
+                @JsonProperty("userAddress")UserAddress userAddress) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
         this.birthDate = birthDate;
-//        this.homeAddress = homeAddress;
+        this.userAddress = userAddress;
     }
 
 
-    public Long getId() {
+        public Long getId() {
         return id;
     }
 
@@ -68,9 +73,9 @@ public class User {
         return birthDate;
     }
 
-//    public String getHomeAddress() {
-//        return homeAddress;
-//    }
+    public UserAddress getUserAddress() {
+        return userAddress;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -92,10 +97,9 @@ public class User {
         this.birthDate = birthDate;
     }
 
-//    public void setHomeAddress(String homeAddress) {
-//        this.homeAddress = homeAddress;
-//    }
-
+    public void setUserAddress(UserAddress userAddress) {
+        this.userAddress = userAddress;
+    }
 
     @Override
     public String toString() {
@@ -105,6 +109,7 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthDate=" + birthDate +
+                ", userAddress=" + userAddress +
                 '}';
     }
 }
