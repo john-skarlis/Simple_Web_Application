@@ -41,10 +41,6 @@ public class ApiController {
         userAddressService.addUserAddress(personDTO);
     }
 
-    @GetMapping(path = "/api/address/{id}")
-    public Optional<UserAddress> getAddress(@PathVariable(value = "id") Long address_id){
-        return userAddressService.getAddress(address_id);
-    }
 }
 
 
