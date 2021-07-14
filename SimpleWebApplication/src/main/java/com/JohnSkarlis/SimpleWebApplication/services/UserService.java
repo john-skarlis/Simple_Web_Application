@@ -5,6 +5,7 @@ import com.JohnSkarlis.SimpleWebApplication.model.UserAddress;
 import com.JohnSkarlis.SimpleWebApplication.repositories.UserRepository;
 import com.JohnSkarlis.SimpleWebApplication.model.User;
 import com.JohnSkarlis.SimpleWebApplication.utils.ConvertFromPersonDTO;
+import com.JohnSkarlis.SimpleWebApplication.utils.ConvertToPersonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -22,12 +23,16 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getUsers(User user){
-            return userRepository.findAll();
+    public List<PersonDTO> getUsers(){
+        ConvertToPersonDTO convertToPersonDTO = new ConvertToPersonDTO(userRepository.findAll());
+        List<PersonDTO> personDTOList = convertToPersonDTO.getPersonDTOList();
+        return personDTOList;
     }
 
-    public Optional<User> getUser(Long user_id){
-        return userRepository.findById(user_id);
+    public PersonDTO getUser(Long user_id){
+        ConvertToPersonDTO convertToPersonDTO = new ConvertToPersonDTO(userRepository.findById(user_id).get());
+        PersonDTO personDTO = convertToPersonDTO.getPersonDTO();
+        return personDTO;
     }
 
     //register a new user

@@ -25,17 +25,17 @@ public class ApiController {
 
     //get all users
     @GetMapping(path = "/api/users")
-    public List<User> getUsers(User user){
-        return userService.getUsers(user);
+    public List<PersonDTO> getUsers(){
+        return userService.getUsers();
     }
 
     //get a specific user by id
     @GetMapping(path = "/api/user/{id}")
-    public Optional<User> getUser(@PathVariable(value = "id") Long user_id){
+    public PersonDTO getUser(@PathVariable(value = "id") Long user_id){
         return userService.getUser(user_id);
     }
 
-    //add a user with post
+    //add a user with post method
     @PostMapping(path = "/api/user/add")
     public void addALl(@RequestBody PersonDTO personDTO){
         userAddressService.addUserAddress(personDTO);

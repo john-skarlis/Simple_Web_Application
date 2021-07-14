@@ -94,4 +94,5 @@ public class PersonDTO {
     public void setWorkAddress(String workAddress) {
         this.workAddress = workAddress;
     }
+
 }

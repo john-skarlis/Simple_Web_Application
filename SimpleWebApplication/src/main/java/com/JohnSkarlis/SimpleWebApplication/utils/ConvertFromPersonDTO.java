@@ -13,7 +13,7 @@ public class ConvertFromPersonDTO {
         this.personDTO = personDTO;
     }
 
-    //convert persondto to user model
+    //convert personDto to user model
     public User getConvertedUser(){
         user.setName(personDTO.getName());
         user.setSurname(personDTO.getSurname());
@@ -21,7 +21,7 @@ public class ConvertFromPersonDTO {
         user.setBirthDate(personDTO.getBirthDate());
         return user;
     }
-    //convert persondto to userAddress model
+    //convert personDto to userAddress model
     public UserAddress getConvertedUserAddress(){
         userAddress.setHomeAddress(personDTO.getHomeAddress());
         userAddress.setWorkAddress(personDTO.getWorkAddress());
