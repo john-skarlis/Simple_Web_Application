@@ -26,7 +26,7 @@ public class User {
     private LocalDate birthDate;
 
 
-    @OneToOne(orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.PERSIST,orphanRemoval = true)
     @JoinColumn(name = "address_id")
     private UserAddress userAddress;
 

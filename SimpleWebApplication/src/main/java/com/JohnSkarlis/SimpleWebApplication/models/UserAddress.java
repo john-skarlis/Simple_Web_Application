@@ -13,10 +13,6 @@ public class UserAddress {
     @Column(name = "address_id")
     private Long id;
 
-//    @OneToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
-
     @Column(name = "home_address")
     private String homeAddress;
 
@@ -26,9 +22,8 @@ public class UserAddress {
     public UserAddress() {
     }
 
-    public UserAddress(@JsonProperty("home_address")String homeAddress,
-                       @JsonProperty("work_address")String workAddress) {
-//        this.user = user;
+    public UserAddress(@JsonProperty("home_address") String homeAddress,
+                       @JsonProperty("work_address") String workAddress) {
         this.homeAddress = homeAddress;
         this.workAddress = workAddress;
     }
@@ -40,14 +35,6 @@ public class UserAddress {
     public void setId(Long id) {
         this.id = id;
     }
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 
     public String getHomeAddress() {
         return homeAddress;
@@ -69,7 +56,6 @@ public class UserAddress {
     public String toString() {
         return "UserAddress{" +
                 "id=" + id +
-//                ", userId=" + user +
                 ", homeAddress='" + homeAddress + '\'' +
                 ", workAddress='" + workAddress + '\'' +
                 '}';

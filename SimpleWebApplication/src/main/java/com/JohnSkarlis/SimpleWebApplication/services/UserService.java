@@ -1,11 +1,9 @@
 package com.JohnSkarlis.SimpleWebApplication.services;
 
-import com.JohnSkarlis.SimpleWebApplication.dtos.PersonDTO;
+import com.JohnSkarlis.SimpleWebApplication.dtos.UserDTO;
 import com.JohnSkarlis.SimpleWebApplication.models.User;
-import com.JohnSkarlis.SimpleWebApplication.models.UserAddress;
 import com.JohnSkarlis.SimpleWebApplication.repositories.UserRepository;
-import com.JohnSkarlis.SimpleWebApplication.utils.ConvertFromPersonDTO;
-import com.JohnSkarlis.SimpleWebApplication.utils.ConvertToPersonDTO;
+import com.JohnSkarlis.SimpleWebApplication.utils.ConversionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -15,40 +13,34 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository ;
+    private final UserRepository userRepository;
 
     @Autowired
     public UserService(@Qualifier("userRepository") UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
     //returns all users
-    public List<PersonDTO> getUsers(){
-        ConvertToPersonDTO convertToPersonDTO = new ConvertToPersonDTO(userRepository.findAll());
-        List<PersonDTO> personDTOList = convertToPersonDTO.getPersonDTOList();
-        return personDTOList;
+    public List<UserDTO> getUsers() {
+        List<User> userList = userRepository.findAll();
+        return ConversionUtils.convertToUserDTOList(userList);
     }
+
     //returns a specific requested user
-    public PersonDTO getUser(Long user_id){
-        ConvertToPersonDTO convertToPersonDTO = new ConvertToPersonDTO(userRepository.findById(user_id).get());
-        PersonDTO personDTO = convertToPersonDTO.getPersonDTO();
-        return personDTO;
+    public UserDTO getUser(Long userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        return ConversionUtils.convertToUserDTO(user);
     }
 
     //register a new user
-    public void addUser(PersonDTO personDTO , UserAddress userAddress) {
-        ConvertFromPersonDTO convertFromPersonDTO = new ConvertFromPersonDTO(personDTO);
-        User user = convertFromPersonDTO.getConvertedUser();
-        user.setUserAddress(userAddress);
+    public void addUser(UserDTO userDTO) {
+        User user = ConversionUtils.convertToUser(userDTO);
         userRepository.save(user);
     }
 
-    public void add_user(PersonDTO personDTO){
-        ConvertFromPersonDTO convertFromPersonDTO = new ConvertFromPersonDTO(personDTO);
-        userRepository.saveAndFlush(convertFromPersonDTO.getConvertedUser());
-    }
 
     //delete a specific user
-    public void deleteUser(Long user_id){
+    public void deleteUser(Long user_id) {
         userRepository.deleteById(user_id);
     }
 }

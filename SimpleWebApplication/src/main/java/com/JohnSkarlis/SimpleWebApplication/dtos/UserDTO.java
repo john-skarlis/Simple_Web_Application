@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
 
-public class PersonDTO {
+public class UserDTO {
     private Long user_id;
     private String name;
     private String surname;
@@ -14,15 +14,15 @@ public class PersonDTO {
     private String homeAddress;
     private String workAddress;
 
-    public PersonDTO() {
+    public UserDTO() {
     }
 
-    public PersonDTO(@JsonProperty("name")String name,
-                     @JsonProperty("surname")String surname,
-                     @JsonProperty("gender")String gender,
-                     @JsonProperty("date")LocalDate birthDate,
-                     @JsonProperty("home_address")String homeAddress,
-                     @JsonProperty("work_address")String workAddress) {
+    public UserDTO(@JsonProperty("name")String name,
+                   @JsonProperty("surname")String surname,
+                   @JsonProperty("gender")String gender,
+                   @JsonProperty("date")LocalDate birthDate,
+                   @JsonProperty("home_address")String homeAddress,
+                   @JsonProperty("work_address")String workAddress) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
