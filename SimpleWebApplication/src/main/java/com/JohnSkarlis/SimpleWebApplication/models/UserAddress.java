@@ -1,4 +1,4 @@
-package com.JohnSkarlis.SimpleWebApplication.model;
+package com.JohnSkarlis.SimpleWebApplication.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

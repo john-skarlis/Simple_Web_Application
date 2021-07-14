@@ -1,7 +1,7 @@
 package com.JohnSkarlis.SimpleWebApplication.utils;
 
 import com.JohnSkarlis.SimpleWebApplication.dtos.PersonDTO;
-import com.JohnSkarlis.SimpleWebApplication.model.User;
+import com.JohnSkarlis.SimpleWebApplication.models.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.JohnSkarlis.SimpleWebApplication.repositories;
 
-import com.JohnSkarlis.SimpleWebApplication.model.User;
-import com.JohnSkarlis.SimpleWebApplication.model.UserAddress;
+import com.JohnSkarlis.SimpleWebApplication.models.User;
+import com.JohnSkarlis.SimpleWebApplication.models.UserAddress;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

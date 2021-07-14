@@ -1,4 +1,4 @@
-package com.JohnSkarlis.SimpleWebApplication.model;
+package com.JohnSkarlis.SimpleWebApplication.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -26,7 +26,7 @@ public class User {
     private LocalDate birthDate;
 
 
-    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "address_id")
     private UserAddress userAddress;
 
@@ -47,7 +47,7 @@ public class User {
     }
 
 
-        public Long getId() {
+    public Long getId() {
         return id;
     }
 

@@ -1,7 +1,7 @@
 package com.JohnSkarlis.SimpleWebApplication.services;
 
 import com.JohnSkarlis.SimpleWebApplication.dtos.PersonDTO;
-import com.JohnSkarlis.SimpleWebApplication.model.UserAddress;
+import com.JohnSkarlis.SimpleWebApplication.models.UserAddress;
 import com.JohnSkarlis.SimpleWebApplication.repositories.UserAddressRepository;
 import com.JohnSkarlis.SimpleWebApplication.utils.ConvertFromPersonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +29,4 @@ public class UserAddressService {
         userAddressRepository.save(userAddress);
         userService.addUser(personDTO,userAddress);
     }
-
-//    public Optional<UserAddress> getAddress(Long address_id){
-//       return userAddressRepository.findById(address_id);
-//    }
 }

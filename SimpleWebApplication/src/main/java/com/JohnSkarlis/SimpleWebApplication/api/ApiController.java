@@ -1,15 +1,12 @@
 package com.JohnSkarlis.SimpleWebApplication.api;
 
 import com.JohnSkarlis.SimpleWebApplication.dtos.PersonDTO;
-import com.JohnSkarlis.SimpleWebApplication.model.User;
-import com.JohnSkarlis.SimpleWebApplication.model.UserAddress;
 import com.JohnSkarlis.SimpleWebApplication.services.UserAddressService;
 import com.JohnSkarlis.SimpleWebApplication.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -37,7 +34,7 @@ public class ApiController {
 
     //add a user with post method
     @PostMapping(path = "/api/user/add")
-    public void addALl(@RequestBody PersonDTO personDTO){
+    public void addUser(@RequestBody PersonDTO personDTO){
         userAddressService.addUserAddress(personDTO);
     }
 

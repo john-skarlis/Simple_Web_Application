@@ -1,8 +1,8 @@
 package com.JohnSkarlis.SimpleWebApplication.utils;
 
 import com.JohnSkarlis.SimpleWebApplication.dtos.PersonDTO;
-import com.JohnSkarlis.SimpleWebApplication.model.User;
-import com.JohnSkarlis.SimpleWebApplication.model.UserAddress;
+import com.JohnSkarlis.SimpleWebApplication.models.User;
+import com.JohnSkarlis.SimpleWebApplication.models.UserAddress;
 
 public class ConvertFromPersonDTO {
    private User user = new User();
@@ -13,7 +13,7 @@ public class ConvertFromPersonDTO {
         this.personDTO = personDTO;
     }
 
-    //convert personDto to user model
+    //convert personDto to user models
     public User getConvertedUser(){
         user.setName(personDTO.getName());
         user.setSurname(personDTO.getSurname());
@@ -21,7 +21,7 @@ public class ConvertFromPersonDTO {
         user.setBirthDate(personDTO.getBirthDate());
         return user;
     }
-    //convert personDto to userAddress model
+    //convert personDto to userAddress models
     public UserAddress getConvertedUserAddress(){
         userAddress.setHomeAddress(personDTO.getHomeAddress());
         userAddress.setWorkAddress(personDTO.getWorkAddress());

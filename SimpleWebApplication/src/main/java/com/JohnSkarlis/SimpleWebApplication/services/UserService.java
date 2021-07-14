@@ -1,9 +1,9 @@
 package com.JohnSkarlis.SimpleWebApplication.services;
 
 import com.JohnSkarlis.SimpleWebApplication.dtos.PersonDTO;
-import com.JohnSkarlis.SimpleWebApplication.model.UserAddress;
+import com.JohnSkarlis.SimpleWebApplication.models.User;
+import com.JohnSkarlis.SimpleWebApplication.models.UserAddress;
 import com.JohnSkarlis.SimpleWebApplication.repositories.UserRepository;
-import com.JohnSkarlis.SimpleWebApplication.model.User;
 import com.JohnSkarlis.SimpleWebApplication.utils.ConvertFromPersonDTO;
 import com.JohnSkarlis.SimpleWebApplication.utils.ConvertToPersonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -43,7 +42,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    //delete a specfic user
+    //delete a specific user
     public void deleteUser(Long user_id){
         userRepository.deleteById(user_id);
     }
