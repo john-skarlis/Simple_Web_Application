@@ -41,6 +41,12 @@ public class ApiController {
         userAddressService.addUserAddress(personDTO);
     }
 
+    //delete a user
+    @DeleteMapping(path = "/api/user/del/{id}")
+    public void deleteUser(@PathVariable(value = "id") Long user_id){
+        userService.deleteUser(user_id);
+    }
+
 }
 
 

@@ -22,13 +22,13 @@ public class UserService {
     public UserService(@Qualifier("userRepository") UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
+    //returns all users
     public List<PersonDTO> getUsers(){
         ConvertToPersonDTO convertToPersonDTO = new ConvertToPersonDTO(userRepository.findAll());
         List<PersonDTO> personDTOList = convertToPersonDTO.getPersonDTOList();
         return personDTOList;
     }
-
+    //returns a specific requested user
     public PersonDTO getUser(Long user_id){
         ConvertToPersonDTO convertToPersonDTO = new ConvertToPersonDTO(userRepository.findById(user_id).get());
         PersonDTO personDTO = convertToPersonDTO.getPersonDTO();
@@ -41,5 +41,10 @@ public class UserService {
         User user = convertFromPersonDTO.getConvertedUser();
         user.setUserAddress(userAddress);
         userRepository.save(user);
+    }
+
+    //delete a specfic user
+    public void deleteUser(Long user_id){
+        userRepository.deleteById(user_id);
     }
 }

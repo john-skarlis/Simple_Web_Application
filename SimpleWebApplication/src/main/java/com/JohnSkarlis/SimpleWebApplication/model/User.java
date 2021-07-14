@@ -26,15 +26,9 @@ public class User {
     private LocalDate birthDate;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "address_id")
     private UserAddress userAddress;
-
-//    @OneToOne
-//    private UserAddress userAddress;
-
-//    @Column(name="home_address")
-//    private String homeAddress;
 
 
     public User() {
