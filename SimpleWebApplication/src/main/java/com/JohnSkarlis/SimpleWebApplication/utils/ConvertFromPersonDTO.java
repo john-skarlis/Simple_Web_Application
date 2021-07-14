@@ -19,6 +19,8 @@ public class ConvertFromPersonDTO {
         user.setSurname(personDTO.getSurname());
         user.setGender(personDTO.getGender());
         user.setBirthDate(personDTO.getBirthDate());
+        UserAddress useradress = new UserAddress("xalkidiki","sparti");
+        user.setUserAddress(useradress);
         return user;
     }
     //convert personDto to userAddress models

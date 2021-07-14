@@ -35,7 +35,8 @@ public class ApiController {
     //add a user with post method
     @PostMapping(path = "/api/user/add")
     public void addUser(@RequestBody PersonDTO personDTO){
-        userAddressService.addUserAddress(personDTO);
+       // userAddressService.addUserAddress(personDTO);
+        userService.add_user(personDTO);
     }
 
     //delete a user

@@ -42,6 +42,11 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void add_user(PersonDTO personDTO){
+        ConvertFromPersonDTO convertFromPersonDTO = new ConvertFromPersonDTO(personDTO);
+        userRepository.saveAndFlush(convertFromPersonDTO.getConvertedUser());
+    }
+
     //delete a specific user
     public void deleteUser(Long user_id){
         userRepository.deleteById(user_id);
