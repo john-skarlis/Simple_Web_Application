@@ -23,9 +23,7 @@ public class UserAddressService {
         this.userService = userService;
     }
 
-//    public List<UserAddress> getUserAddress(Long user_id){
-//        return userAddressRepository.findByUserId(user_id);
-//    }
+
     //register a new user
     public void addUserAddress(PersonDTO personDTO){
         ConvertFromPersonDTO convertFromPersonDTO = new ConvertFromPersonDTO(personDTO);
@@ -34,7 +32,7 @@ public class UserAddressService {
         userService.addUser(personDTO,userAddress);
     }
 
-    public Optional<UserAddress> getAddress(Long address_id){
-       return userAddressRepository.findById(address_id);
-    }
+//    public Optional<UserAddress> getAddress(Long address_id){
+//       return userAddressRepository.findById(address_id);
+//    }
 }

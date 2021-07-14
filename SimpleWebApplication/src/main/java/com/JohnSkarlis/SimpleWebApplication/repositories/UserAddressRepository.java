@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("userAddressRepository")
 public interface UserAddressRepository extends JpaRepository<UserAddress,Long> {
-    
+
 }
