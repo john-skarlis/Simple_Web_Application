@@ -1,6 +1,7 @@
 package com.JohnSkarlis.SimpleWebApplication.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -13,9 +14,11 @@ public class UserAddress {
     @Column(name = "address_id")
     private Long id;
 
+    @Nullable
     @Column(name = "home_address")
     private String homeAddress;
 
+    @Nullable
     @Column(name = "work_address")
     private String workAddress;
 

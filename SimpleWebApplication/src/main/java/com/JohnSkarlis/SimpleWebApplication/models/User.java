@@ -1,32 +1,33 @@
 package com.JohnSkarlis.SimpleWebApplication.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="user_id")
+    @Column(name = "user_id")
     private Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="surname")
+    @Column(name = "surname")
     private String surname;
 
-    @Column(name="gender")
+    @Column(name = "gender")
     private String gender;
 
-    @Column(name="birth_date")
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
 
-    @OneToOne(cascade = CascadeType.PERSIST,orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JoinColumn(name = "address_id")
     private UserAddress userAddress;
 
@@ -34,11 +35,11 @@ public class User {
     public User() {
     }
 
-    public User(@JsonProperty("name")String name,
-                @JsonProperty("surname")String surname,
-                @JsonProperty("gender")String gender,
-                @JsonProperty("date")LocalDate birthDate,
-                @JsonProperty("userAddress")UserAddress userAddress) {
+    public User(@JsonProperty("name") String name,
+                @JsonProperty("surname") String surname,
+                @JsonProperty("gender") String gender,
+                @JsonProperty("date") LocalDate birthDate,
+                @JsonProperty("userAddress") UserAddress userAddress) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
