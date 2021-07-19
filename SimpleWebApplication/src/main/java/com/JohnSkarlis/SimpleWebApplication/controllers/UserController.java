@@ -33,8 +33,8 @@ public class UserController {
 
     //add a user with post method
     @PostMapping
-    public void addUser(@RequestBody UserDTO userDTO) {
-        userService.addUser(userDTO);
+    public String addUser(@RequestBody UserDTO userDTO) {
+        return userService.addUser(userDTO);
     }
 
     //delete a user

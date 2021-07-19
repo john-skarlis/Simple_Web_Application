@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -33,9 +34,16 @@ public class UserService {
     }
 
     //register a new user
-    public void addUser(UserDTO userDTO) {
+    public String addUser(UserDTO userDTO) {
+        String response="";
         User user = ConversionUtils.convertToUser(userDTO);
-        userRepository.save(user);
+        if(userRepository.check(user.getName(),user.getSurname(),user.getBirthDate())!= null){
+            response = "This user already exists";
+        }else{
+            userRepository.save(user);
+            response = "User saved successfully";
+        }
+        return response;
     }
 
 
